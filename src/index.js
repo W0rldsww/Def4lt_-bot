@@ -14,15 +14,12 @@ client.on('ready', (c) => {
     console.log(`✔️ ${c.user.tag} is online.`);
 });
 
+client.on('interactionCreate', (interaction) => {
+    if (interaction.isChatInputCommand()) return;
 
-client.on('messageCreate', (message) => {
-    if (message.author.bot) {
-        return;
+    if (interaction.commandName === 'hey') {
+        interaction.reply('hey!');
     }
-
-    if (message.content === 'Allo') {
-        message.reply("A l'huile")
-    };
 });
 
 client.login(process.env.TOKEN);
